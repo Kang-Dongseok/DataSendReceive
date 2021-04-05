@@ -1,0 +1,47 @@
+package socket;
+
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.util.Scanner;
+
+/**
+ * 1. 프로젝트 : DataSendReceive
+ * 2. 파일명 : Client.java
+ * 3. 작성자 : 강동석
+ * ...
+*/
+public class Client {
+
+	public static void main(String[] args) {
+
+		Socket client = null;
+		Scanner sc = null;
+		BufferedWriter bw = null;
+		
+		try {
+			
+			client = new Socket();
+			client.connect(new InetSocketAddress("localhost", 1234));
+			sc = new Scanner(System.in);
+			
+			bw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream(), "UTF-8"));
+			System.out.print("To Server >>>");
+			String toServer = sc.nextLine();
+			bw.write(toServer + '\n');
+			bw.flush();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if() {}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+}
